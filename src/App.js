@@ -74,7 +74,7 @@ function App(props) {
 
           {props.locationInfo.coords && props.locationInfo.coords.altitude && <br />}
 
-          {props.locationInfo.coords && props.locationInfo.coords.altitude && `Elevation: ${props.locationInfo.coords.altitude}` }
+          {props.locationInfo.coords && props.locationInfo.coords.altitude && `Elevation: ${(props.locationInfo.coords.altitude * 3.2808399).toFixed(2)} ft` }
           
           <br />
 
