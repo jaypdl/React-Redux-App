@@ -62,13 +62,16 @@ function App(props) {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Weather Version 1</h1>
+        <h1>Weather Version αlpha</h1>
       </header>
         <p>
-          {props.longitude ? `Longitude: ${props.longitude}` : 'no'}
-        </p>
-        <p>
-          {props.latitude ? `Latitude: ${props.latitude}` : 'no'}
+          {props.longitude ? `Longitude: ${props.longitude}` : 'Loading...'}
+          <br />
+          {props.latitude ? `Latitude: ${props.latitude}` : 'Please Wait...'}
+          {props.locationInfo.coords.altitude && <br />}
+          {props.locationInfo.coords.altitude && `Elevation: ${props.locationInfo.coords.altitude}`}
+          <br />
+          {props.pointInfo && `${props.pointInfo.properties.relativeLocation.properties.city}, ${props.pointInfo.properties.relativeLocation.properties.state}`}
         </p>
         <button onClick={() => setDisplayNumber(1)} disabled={displayNumber === 1}>Display 1 Day</button>
         <button onClick={() => setDisplayNumber(2)} disabled={displayNumber === 2}>Display 2 Days</button>
