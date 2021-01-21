@@ -15,7 +15,7 @@ import { getLocationSuccess } from './actions';
 function App(props) {
   // const [userLocation, setUserLocation] = useState(null)
   // const [userLocationError, setUserLocationError] = useState(null)
-
+  const [displayNumber, setDisplayNumber] = useState(1);
   useEffect(() => {
     getUserLocation()
   },[]) //eslint-disable-line
@@ -70,10 +70,23 @@ function App(props) {
         <p>
           {props.latitude ? `Latitude: ${props.latitude}` : 'no'}
         </p>
+        <button onClick={() => setDisplayNumber(1)}>Display 1 Day</button>
+        <button onClick={() => setDisplayNumber(2)}>Display 2 Days</button>
+        <button onClick={() => setDisplayNumber(3)}>Display 3 Days</button>
+        <div className='imageGroup'>
         {
-          props.forecastZone &&
-        <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=0&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
+          props.forecastZone && (displayNumber > 0) &&
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=0&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
         }
+        {
+          props.forecastZone && (displayNumber > 1) &&
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=48&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
+        }
+        {
+          props.forecastZone && (displayNumber > 2) &&
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=96&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
+        }
+        </div>
     </div>
   );
 };
