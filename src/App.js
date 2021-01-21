@@ -57,8 +57,9 @@ function App(props) {
   //     <h1>Please Wait...</h1>
   //   )
   // }
-  console.log('long', props.longitude)
-  console.log('lat', props.latitude)
+  // console.log('long', props.longitude)
+  // console.log('lat', props.latitude)
+  console.log(props.locationInfo.coords)
   return (
     <div className="App">
       <header className="App-header">
@@ -66,11 +67,17 @@ function App(props) {
       </header>
         <p>
           {props.longitude ? `Longitude: ${props.longitude}` : 'Loading...'}
+
           <br />
+          
           {props.latitude ? `Latitude: ${props.latitude}` : 'Please Wait...'}
-          {props.locationInfo.coords.altitude && <br />}
-          {props.locationInfo.coords.altitude && `Elevation: ${props.locationInfo.coords.altitude}`}
+
+          {props.locationInfo.coords && props.locationInfo.coords.altitude && <br />}
+
+          {props.locationInfo.coords && props.locationInfo.coords.altitude && `Elevation: ${props.locationInfo.coords.altitude}` }
+          
           <br />
+
           {props.pointInfo && `${props.pointInfo.properties.relativeLocation.properties.city}, ${props.pointInfo.properties.relativeLocation.properties.state}`}
         </p>
         <button onClick={() => setDisplayNumber(1)} disabled={displayNumber === 1}>Display 1 Day</button>
