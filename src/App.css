@@ -26,7 +26,7 @@ body {
 
 .forecastImage {
   box-sizing: content-box;
-  min-width: 90%;
-  margin:auto
-  /* width: max-content; */
+  /* min-width: 90%; */
+  margin:auto;
+  width: max-content;
 }

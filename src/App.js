@@ -70,9 +70,9 @@ function App(props) {
         <p>
           {props.latitude ? `Latitude: ${props.latitude}` : 'no'}
         </p>
-        <button onClick={() => setDisplayNumber(1)}>Display 1 Day</button>
-        <button onClick={() => setDisplayNumber(2)}>Display 2 Days</button>
-        <button onClick={() => setDisplayNumber(3)}>Display 3 Days</button>
+        <button onClick={() => setDisplayNumber(1)} disabled={displayNumber === 1}>Display 1 Day</button>
+        <button onClick={() => setDisplayNumber(2)} disabled={displayNumber === 2}>Display 2 Days</button>
+        <button onClick={() => setDisplayNumber(3)} disabled={displayNumber === 3}>Display 3 Days</button>
         <div className='imageGroup'>
         {
           props.forecastZone && (displayNumber > 0) &&
