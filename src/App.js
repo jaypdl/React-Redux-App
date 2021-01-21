@@ -15,7 +15,7 @@ import { getLocationSuccess } from './actions';
 function App(props) {
   // const [userLocation, setUserLocation] = useState(null)
   // const [userLocationError, setUserLocationError] = useState(null)
-  const [displayNumber, setDisplayNumber] = useState(1);
+  const [displayNumber, setDisplayNumber] = useState(2);
   useEffect(() => {
     getUserLocation()
   },[]) //eslint-disable-line
@@ -80,21 +80,26 @@ function App(props) {
 
           {props.pointInfo && `${props.pointInfo.properties.relativeLocation.properties.city}, ${props.pointInfo.properties.relativeLocation.properties.state}`}
         </p>
-        <button onClick={() => setDisplayNumber(1)} disabled={displayNumber === 1}>Display 1 Day</button>
         <button onClick={() => setDisplayNumber(2)} disabled={displayNumber === 2}>Display 2 Days</button>
-        <button onClick={() => setDisplayNumber(3)} disabled={displayNumber === 3}>Display 3 Days</button>
+        <button onClick={() => setDisplayNumber(4)} disabled={displayNumber === 4}>Display 4 Days</button>
+        <button onClick={() => setDisplayNumber(6)} disabled={displayNumber === 6}>Display 6 Days</button>
+        <button onClick={() => setDisplayNumber(8)} disabled={displayNumber === 8}>Display 8 Days (Max)</button>
         <div className='imageGroup'>
         {
           props.forecastZone && (displayNumber > 0) &&
-          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=0&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
-        }
-        {
-          props.forecastZone && (displayNumber > 1) &&
-          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=48&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=0&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='0 to 2 Day Forecast' />
         }
         {
           props.forecastZone && (displayNumber > 2) &&
-          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=96&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=48&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='2 to 4 Day Forecast' />
+        }
+        {
+          props.forecastZone && (displayNumber > 4) &&
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=96&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='4 to 6 Day Forecast' />
+        }
+        {
+          props.forecastZone && (displayNumber > 6) &&
+          <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=144&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='6 to 8 Day Forecast' />
         }
         </div>
     </div>
