@@ -7,6 +7,7 @@ const initialState = {
   longitude: '',
   pointInfo: '',
   forecastInfo: '',
+  forecastZone: '',
   axiosError: ''
 }
 
@@ -25,6 +26,7 @@ const reducer = (state = initialState, action) => {
       return ({
         ...state,
         pointInfo: action.payload,
+        forecastZone: action.payload.properties.forecastZone.split('/zones/forecast/')[1] ,
         axiosError:''
       })
     default:

@@ -63,13 +63,17 @@ function App(props) {
     <div className="App">
       <header className="App-header">
         <h1>Weather Version 1</h1>
+      </header>
         <p>
           {props.longitude ? `Longitude: ${props.longitude}` : 'no'}
         </p>
         <p>
           {props.latitude ? `Latitude: ${props.latitude}` : 'no'}
         </p>
-      </header>
+        {
+          props.forecastZone &&
+        <img className={'forecastImage'} src={`https://forecast.weather.gov/meteograms/Plotter.php?lat=${props.latitude}&lon=${props.longitude}&wfo=${props.pointInfo.properties.cwa}&zcode=${props.forecastZone}&gset=30&gdiff=8&unit=0&tinfo=MY7&ahour=0&pcmd=11011111111110100000000000000000000000000000000000000000000&lg=en&indu=1!1!1!&dd=&bw=&hrspan=48&pqpfhr=6&psnwhr=6`} alt='48 Hour Forecast' />
+        }
     </div>
   );
 };
@@ -80,7 +84,8 @@ const mapStateToProps = state => {
     pointInfo: state.pointInfo,
     latitude: state.latitude,
     longitude: state.longitude,
-    forecastInfo: state.forecastInfo
+    forecastInfo: state.forecastInfo,
+    forecastZone: state.forecastZone
   }
 }
 
